@@ -2,7 +2,7 @@ import os;
 godotPath = "e:\\godot\\";
 godotGit = "https://github.com/godotengine/godot.git";
 gitPull = "git pull";
-sconsPath = "C:\\Users\\ricky\\AppData\\local\\Programs\\Python\\Python37\\scripts\scons.bat";
+sconsPath = "C:\\Users\\user\\AppData\\local\\Programs\\Python\\Python37\\scripts\scons.bat";
 sconsGlueCmd = " platform=windows tools=yes module_mono_enabled=yes mono_glue=false -j3";
 sconsToolsWinCmd = " platform=windows tools=yes module_mono_enabled=yes target=release_debug -j3";
 sconsDebugExportWinCmd = " platform=windows tools=no module_mono_enabled=yes target=debug -j3";
