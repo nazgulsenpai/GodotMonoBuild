@@ -1,0 +1,31 @@
+import os;
+godotPath = "e:\\godot\\";
+godotGit = "https://github.com/godotengine/godot.git";
+gitPull = "git pull";
+sconsPath = "C:\\Users\\ricky\\AppData\\local\\Programs\\Python\\Python37\\scripts\scons.bat";
+sconsGlueCmd = " platform=windows tools=yes module_mono_enabled=yes mono_glue=false -j3";
+sconsToolsWinCmd = " platform=windows tools=yes module_mono_enabled=yes target=release_debug -j3";
+sconsDebugExportWinCmd = " platform=windows tools=no module_mono_enabled=yes target=debug -j3";
+sconsReleaseExportWinCmd = " platform=windows tools=no module_mono_enabled=yes target=release -j3";
+godotGlueCmd = godotPath + "bin\\godot.windows.tools.64.mono.exe --generate-mono-glue " + godotPath + "modules\\mono\\glue"
+os.chdir(godotPath);
+print ("[1] Git pull on " + godotPath);
+output = os.popen(gitPull).read();
+print(output);
+print ("[2] Compiling Mono Glue generating tools executable: " + sconsPath + " " + sconsGlueCmd );
+output = os.popen(sconsPath + " " + sconsGlueCmd).read();
+print(output);
+print ("[3] Generate Mono Glue: " + godotGlueCmd);
+output = os.popen(godotGlueCmd).read();
+print(output);
+print ("[4] Build Godot Tools: " + sconsToolsWinCmd);
+output = os.popen(sconsPath + " " + sconsToolsWinCmd).read();
+print(output);
+print ("[5] Build Godot Release Export: " + sconsReleaseExportWinCmd);
+output = os.popen(sconsPath + " " + sconsReleaseExportWinCmd).read();
+print(output);
+print ("[6] Build Godot Debug Export: " + sconsDebugExportWinCmd);
+output = os.popen(sconsPath + " " +  sconsDebugExportWinCmd).read();
+print(output);
+print ("done");
+
